@@ -168,12 +168,25 @@ display_table_4 = """
 select * from September_Cardiology_Appointments;
 """
 
+cardiology_update = """
+UPDATE Cardiology_Staff
+SET Employee_Salary = "$450,749"
+WHERE Employee_Name = "Anton Luna";
+"""
+
+anesthetics_update = """
+UPDATE Anesthetics_Staff
+SET Employee_Salary = "$115,000"
+WHERE Employee_Name = "Manuel Hernandez";
+"""
+
+
 
 #Callout section
 
 connection = create_server_connection("localhost", "root", "student","Central_Clinic")
-execute_query(connection, sept_apt_info )
+execute_query(connection, anesthetics_update )
 
-information = read_query(connection, display_table_4 )
+information = read_query(connection, display_table_2 )
 for values in information:
     print(values)
