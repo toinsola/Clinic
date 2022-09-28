@@ -89,7 +89,7 @@ Patient_Name varchar(30) not null,
 Doctor_Name varchar(30) not null,
 Completed varchar(20) not null);"""
 
-
+#Populating MySQL tables
 
 admissions_info = """
 insert into Admissions values
@@ -152,6 +152,8 @@ insert into September_Cardiology_Appointments values
 ( 015, "09/29/2022", "0830", "Pzal Mahogany", "Cameron Bakehorn", "No"),
 ( 016, "09/31/2022", "0830", "Kelly Brown", "Grace Comerford", "No");"""
 
+#Displaying MySql tables.
+
 display_table_1 = """
 select * from Admissions;
 """
@@ -168,6 +170,8 @@ display_table_4 = """
 select * from September_Cardiology_Appointments;
 """
 
+#Updating Values withing MySql table
+
 cardiology_update = """
 UPDATE Cardiology_Staff
 SET Employee_Salary = "$450,749"
@@ -180,13 +184,28 @@ SET Employee_Salary = "$115,000"
 WHERE Employee_Name = "Manuel Hernandez";
 """
 
+#Deleting values within MySQL table
+
+admissions_delete = """
+DELETE FROM Admissions
+WHERE patient_name = "Mark Blue";
+"""
+
+cardiology_apt_delete = """
+DELETE FROM September_Cardiology_Appointments
+WHERE Appointment_ID = 007;
+"""
+
+
+
+
 
 
 #Callout section
 
 connection = create_server_connection("localhost", "root", "student","Central_Clinic")
-execute_query(connection, anesthetics_update )
+execute_query(connection, cardiology_apt_delete )
 
-information = read_query(connection, display_table_2 )
+information = read_query(connection, display_table_4 )
 for values in information:
     print(values)
