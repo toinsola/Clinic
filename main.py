@@ -1,13 +1,14 @@
 import mysql.connector
 from mysql.connector import Error
 
-def create_server_connection(host_name, user_name, user_password):
+def create_server_connection(host_name, user_name, user_password, db_name):
     connection = None
     try:
         connection = mysql.connector.connect(
             host=host_name,
             user=user_name,
-            password=user_password
+            password=user_password,
+            database=db_name
         )
         print("MySQL Database connection successful")
     except Error as err:
@@ -26,6 +27,6 @@ def create_database(connection, query):
 
 
 #Callout section
-connection = create_server_connection("localhost", "root", "student")
-database_query = "CREATE DATABASE Central_Clinic"
-create_database(connection, database_query)
+
+connection = create_server_connection("localhost", "root", "student","Central_Clinic")
+
